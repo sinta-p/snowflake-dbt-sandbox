@@ -1,0 +1,144 @@
+models:
+- name: order_items
+  description: This model combines line item details with order information to provide
+    a comprehensive view of each order's components and associated metadata. It is
+    useful for analyzing order details, including pricing, shipping, and customer
+    information.
+  columns:
+  - name: transactionkey
+    description: A unique identifier for each order, part, supplier and linenumber combination, created
+      by concatenating orderkey, partkey, suppkey and linenumber.
+    data_tests:
+      - unique
+      - not_null
+  - name: orderkey
+    description: The unique identifier for each order.
+    data_tests:
+      - not_null
+  - name: partkey
+    description: The unique identifier for each part within an order.
+    data_tests:
+      - not_null
+  - name: suppkey
+    description: The unique identifier for the supplier of the part.
+  - name: linenumber
+    description: The line number of the item within the order.
+  - name: quantity
+    description: The quantity of the part ordered.
+  - name: extendedprice
+    description: The total price for the quantity of parts ordered, before discounts.
+  - name: discount
+    description: The discount applied to the extended price.
+  - name: tax
+    description: The tax applied to the extended price after discount.
+  - name: returnflag
+    description: Indicator of whether the item has been returned.
+  - name: linestatus
+    description: The status of the line item, such as pending or completed.
+  - name: shipdate
+    description: The date the item is scheduled to be shipped.
+  - name: commitdate
+    description: The date the order was committed.
+  - name: receiptdate
+    description: The date the item is expected to be received.
+  - name: shipinstruct
+    description: Instructions for shipping the item.
+  - name: shipmode
+    description: The mode of shipping for the item.
+  - name: lineitem_comment
+    description: Comments related to the line item.
+  - name: custkey
+    description: The unique identifier for the customer who placed the order.
+    data_tests:
+      - not_null
+  - name: orderstatus
+    description: The current status of the order, such as open or closed.
+  - name: totalprice
+    description: The total price of the order, including all line items.
+  - name: orderdate
+    description: The date the order was placed.
+  - name: orderpriority
+    description: The priority level of the order.
+  - name: clerk
+    description: The clerk responsible for handling the order.
+  - name: shippriority
+    description: The priority level for shipping the order.
+  - name: order_comment
+    description: Comments related to the order.
+
+- name: part_suppliers
+  description: This model provides a comprehensive view of the relationship between
+    parts and their suppliers, including details about the parts, suppliers, and the
+    supply chain dynamics. It is used to analyze supplier performance, part availability,
+    and cost management.
+  columns:
+  - name: partkey
+    description: A unique identifier for each part.
+    data_tests:
+      - not_null
+  - name: suppkey
+    description: A unique identifier for each supplier.
+    data_tests:
+      - not_null
+  - name: availqty
+    description: The available quantity of the part supplied by the supplier.
+    data_tests:
+      - not_null
+  - name: supplycost
+    description: The cost to supply the part from the supplier.
+    data_tests:
+      - not_null
+  - name: part_supplier_comment
+    description: Comments related to the part-supplier relationship.
+  - name: part_name
+    description: The name of the part.
+    data_tests:
+      - not_null
+  - name: part_mfgr
+    description: The manufacturer of the part.
+    data_tests:
+      - not_null
+  - name: part_brand
+    description: The brand of the part.
+    data_tests:
+      - not_null
+  - name: part_type
+    description: The type or category of the part.
+    data_tests:
+      - not_null
+  - name: part_size
+    description: The size of the part.
+    data_tests:
+      - not_null
+  - name: part_container
+    description: The container type used for the part.
+    data_tests:
+      - not_null
+  - name: part_retailprice
+    description: The retail price of the part.
+    data_tests:
+      - not_null
+  - name: part_comment
+    description: Comments related to the part.
+  - name: supplier_name
+    description: The name of the supplier.
+    data_tests:
+      - not_null
+  - name: supplier_address
+    description: The address of the supplier.
+    data_tests:
+      - not_null
+  - name: supplier_nationkey
+    description: A reference to the nation associated with the supplier.
+    data_tests:
+      - not_null
+  - name: supplier_phone
+    description: The phone number of the supplier.
+    data_tests:
+      - not_null
+  - name: supplier_acctbal
+    description: The account balance of the supplier.
+    data_tests:
+      - not_null
+  - name: supplier_comment
+    description: Comments related to the supplier.

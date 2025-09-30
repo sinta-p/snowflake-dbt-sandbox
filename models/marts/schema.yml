@@ -1,0 +1,37 @@
+models:
+- name: fct_order_items
+  description: This model consolidates order item details with supplier and part information
+    to provide a comprehensive view of each transaction. It is useful for analyzing
+    sales performance, supplier relationships, and inventory management.
+  columns:
+  - name: transactionkey
+    description: A unique identifier for each transaction.
+    data_tests:
+      - unique
+      - not_null
+  - name: quantity
+    description: The number of items ordered in the transaction.
+    data_tests:
+      - not_null
+  - name: custkey
+    description: A unique identifier for the customer who placed the order.
+    data_tests:
+      - not_null
+  - name: extendedprice
+    description: The total price for the quantity of items ordered, before discounts
+      and taxes.
+    data_tests:
+      - not_null
+      - assert_extended_price_is_positive
+  - name: orderdate
+    description: The date when the order was placed.
+    data_tests:
+      - not_null
+  - name: partname
+    description: The name of the part that was ordered.
+    data_tests:
+      - not_null
+  - name: suppliername
+    description: The name of the supplier providing the part.
+    data_tests:
+      - not_null

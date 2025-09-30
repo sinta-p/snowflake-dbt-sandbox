@@ -16,3 +16,4 @@ select
     l_shipmode as shipmode,
     l_comment as comment
 from {{ source("tpch_now", "lineitem") }}
+order by receiptdate DESC

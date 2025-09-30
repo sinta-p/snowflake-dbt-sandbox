@@ -32,7 +32,7 @@ orders as (
     from {{ ref("stg_tpch_orders") }}
 )
 select 
-    concat(li.orderkey, '-', li.partkey) as orderpartkey,
+    concat(li.orderkey, '-', li.partkey, '-', li.suppkey, '-', li.linenumber) as transactionkey,
     li.orderkey,
     li.partkey,
     li.suppkey,
