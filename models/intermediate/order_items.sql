@@ -32,6 +32,7 @@ orders as (
     from {{ ref("stg_tpch_orders") }}
 )
 select 
+    concat(li.orderkey, '-', li.partkey) as orderpartkey,
     li.orderkey,
     li.partkey,
     li.suppkey,
