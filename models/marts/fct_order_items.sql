@@ -1,6 +1,6 @@
 with order_items as (
     select 
-        orderpartkey,
+        transactionkey,
         orderkey,
         partkey,
         suppkey,
@@ -51,7 +51,7 @@ part_suppliers as (
     from {{ ref('part_suppliers') }}
 )
 select 
-    oi.orderpartkey,
+    oi.transactionkey,
     oi.quantity,
     oi.custkey,
     oi.extendedprice,
