@@ -22,7 +22,6 @@ models:
       and taxes.
     data_tests:
       - not_null
-      - assert_extended_price_is_positive
   - name: orderdate
     description: The date when the order was placed.
     data_tests:

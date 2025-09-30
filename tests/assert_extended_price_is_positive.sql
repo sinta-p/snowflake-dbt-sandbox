@@ -1,5 +1,5 @@
 select
     extendedprice
-from {{ ref('order_items') }}
+from {{ ref('fct_order_items') }}
 having extendedprice < 0
 
