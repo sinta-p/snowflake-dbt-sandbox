@@ -58,5 +58,6 @@ select
     oi.orderdate,
     ps.part_name as partname,
     ps.supplier_name as suppliername,
+    ps.supplier_nationkey as suppliernationkey
 from order_items oi
 inner join part_suppliers ps on oi.partkey = ps.partkey and oi.suppkey = ps.suppkey
