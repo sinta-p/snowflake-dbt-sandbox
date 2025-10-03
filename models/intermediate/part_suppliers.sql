@@ -32,6 +32,7 @@ suppliers as (
     from {{ ref('stg_tpch_suppliers') }}
 )
 select 
+    {{ dbt_utils.generate_surrogate_key(['ps.partkey', 'ps.suppkey']) }} as objectkey,
     ps.partkey,
     ps.suppkey,
     ps.availqty,
@@ -54,3 +55,4 @@ select
 from part_suppliers ps
 inner join parts p on ps.partkey = p.partkey
 inner join suppliers s on ps.suppkey = s.suppkey
+
