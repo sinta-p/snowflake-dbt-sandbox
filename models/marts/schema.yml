@@ -30,7 +30,4 @@ models:
     description: The name of the part that was ordered.
     data_tests:
       - not_null
-  - name: suppliername
-    description: The name of the supplier providing the part.
-    data_tests:
-      - not_null
+

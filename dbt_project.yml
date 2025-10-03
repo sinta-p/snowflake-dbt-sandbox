@@ -38,3 +38,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   sf_sandbox_project:
     +materialized: table
+    marts: 
+      +required_tests: {"unique.*|not_null": 2}
+    intermediate:
+      +required_tests: 
+        "unique": 1
+

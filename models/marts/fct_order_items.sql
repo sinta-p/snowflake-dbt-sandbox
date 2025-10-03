@@ -30,6 +30,7 @@ with order_items as (
 
 part_suppliers as (
     select
+        objectkey,
         partkey,
         suppkey,
         availqty,
@@ -58,8 +59,7 @@ select
     oi.custkey,
     oi.extendedprice,
     oi.orderdate,
-    ps.part_name as partname,
-    ps.supplier_name as suppliername,
-    ps.supplier_nationkey as suppliernationkey
+    ps.objectkey,
+    ps.part_name as partname
 from order_items as oi inner join part_suppliers as ps
     on oi.partkey = ps.partkey and oi.suppkey = ps.suppkey

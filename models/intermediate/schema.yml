@@ -72,6 +72,11 @@ models:
     supply chain dynamics. It is used to analyze supplier performance, part availability,
     and cost management.
   columns:
+  - name: objectkey
+    description: primary id for the different object, created from partkey and suppkey
+    data_tests:
+      - not_null
+      - unique
   - name: partkey
     description: A unique identifier for each part.
     data_tests:
