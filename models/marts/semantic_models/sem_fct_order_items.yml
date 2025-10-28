@@ -1,0 +1,43 @@
+semantic_models:
+- name: order_items
+  description: This model consolidates order item details with supplier and part information
+    to provide a comprehensive view of each transaction. It is useful for analyzing
+    sales performance, supplier relationships, and inventory management.
+  model: ref('fct_order_items')
+  defaults:
+    agg_time_dimension: order_date
+  entities:
+  - name: transaction
+    type: primary
+    expr: transactionkey
+  - name: customer
+    type: foreign
+    expr: custkey
+  - name: object
+    type: foreign
+    expr: objectkey
+  dimensions:
+  - name: order_date
+    type: time
+    type_params:
+      time_granularity: day
+  - name: part_name
+    type: categorical
+  measures:
+  - name: quantity
+    description: The number of items ordered in the transaction.
+    agg: sum
+    create_metric: true
+  - name: extended_price
+    description: The total price for the quantity of items ordered, before discounts
+      and taxes.
+    agg: sum
+    create_metric: true
+  - name: count_transaction
+    agg: count
+    create_metric: true
+    expr: transactionkey
+  - name: count_object
+    agg: count_distinct
+    create_metric: true
+    expr: objectkey

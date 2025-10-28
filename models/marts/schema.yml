@@ -3,6 +3,8 @@ models:
   description: This model consolidates order item details with supplier and part information
     to provide a comprehensive view of each transaction. It is useful for analyzing
     sales performance, supplier relationships, and inventory management.
+  time_spine:
+    standard_granularity_column: orderdate  # The base column used for time joins
   columns:
   - name: transactionkey
     description: A unique identifier for each transaction.
@@ -24,10 +26,27 @@ models:
       - not_null
   - name: orderdate
     description: The date when the order was placed.
+    granularity: day
     data_tests:
       - not_null
   - name: partname
     description: The name of the part that was ordered.
     data_tests:
       - not_null
+
+
+# - name: timespine_daily_order_items
+#   description: A time spine with one row per day for revenue earned per day.
+#   time_spine:
+#     standard_granularity_column: date  # The base column used for time joins
+#   columns:
+#     - name: date
+#       description: The base date column for daily granularity
+#       granularity: day
+#     - name: daily_sales
+#       description: The amount of total sales on a daily basis 
+
+
+
+
 
