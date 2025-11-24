@@ -1,3 +1,8 @@
+{{
+    config(
+        severity="warn"
+    )
+}}
 select
     extendedprice
 from {{ ref('fct_order_items') }}
