@@ -1,9 +1,7 @@
-{{
-    config(
-        materialized='view',
-        required_test=None
-    )
-}}
+{{ config(
+    materialized="view", 
+    meta={'required_test': None}
+) }}
 with customer_spending as (
     select
         custkey,
