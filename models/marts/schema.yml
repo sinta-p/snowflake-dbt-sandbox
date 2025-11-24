@@ -34,3 +34,11 @@ models:
         description: The name of the part that was ordered.
         data_tests:
           - not_null
+  - name: timespine_daily_order_items
+    description: timespine of daily order
+    time_spine: 
+      standard_granularity_column: date
+    columns:
+      - name: date
+        granularity: day 
+      - name: revenue 

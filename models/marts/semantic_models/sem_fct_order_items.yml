@@ -1,5 +1,5 @@
 semantic_models:
-- name: order_items
+- name: timespine_daily_order_items
   description: This model consolidates order item details with supplier and part information
     to provide a comprehensive view of each transaction. It is useful for analyzing
     sales performance, supplier relationships, and inventory management.
