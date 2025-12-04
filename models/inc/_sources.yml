@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: inc_sources
+    database: sin_analytics 
+    schema: raw_sources 
+    tables: 
+      - name: inc_raw_orders
+    

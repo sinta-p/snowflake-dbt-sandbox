@@ -1,0 +1,28 @@
+-- check if there is any reprocess_date variable which should trigger the delete post hook to happen
+{% set pre_hook_statements = [] %}
+
+{% if var('reprocess_date', none) is not none %}
+    {% do pre_hook_statements.append(
+    """
+    DELETE FROM {{ this }} 
+    WHERE modified_at = '{{ var('reprocess_date') }}';
+    """
+  ) %}
+{% endif %}
+
+
+{{
+    config(
+        materialized='incremental',
+        unique_key='order_id',
+        tags=["inc"],
+        pre_hook=pre_hook_statements
+    )
+}}
+
+select * from {{ source('inc_sources', 'inc_raw_orders',) }}
+
+{% if is_incremental() %}
+    -- this filter will only be applied on an incremental run
+    where modified_at > (select max(modified_at) from {{ this }}) 
+{% endif %}
