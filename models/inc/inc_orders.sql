@@ -1,11 +1,11 @@
 -- check if there is any reprocess_date variable which should trigger the delete post hook to happen
 {% set pre_hook_statements = [] %}
 
-{% if var('reprocess_date', none) is not none %}
+{% if var('DBT_REPROCESS_DATE', none) is not none %}
     {% do pre_hook_statements.append(
     """
     DELETE FROM {{ this }} 
-    WHERE modified_at = '{{ var('reprocess_date') }}';
+    WHERE modified_at = '{{ var('DBT_REPROCESS_DATE') }}';
     """
   ) %}
 {% endif %}
